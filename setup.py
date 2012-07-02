@@ -4,7 +4,7 @@ import sys, os
 version = "1.0"
 shortdesc = "Container for many lightweight queryable Records for Plone"
 longdesc = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
-longdesc += open(os.path.join(os.path.dirname(__file__), 'docs', 'CHANGELOG.rst')).read()
+longdesc += open(os.path.join(os.path.dirname(__file__), 'docs', 'HISTORY.rst')).read()
 longdesc += open(os.path.join(os.path.dirname(__file__), 'docs', 'LICENSE.rst')).read()
 
 setup(name='souper.plone',

@@ -5,10 +5,11 @@ Overview
 queryable. It is a genric storage for mass-data in an isolated container.
 Light-weight records based on
 `node.ext.zodb <https://github.com/bluedynamics/node.ext.zodb>`_
-are stored in an ``IOBTree``. A Zope-Tool-Kit catalog (zope.catalog) in used to
-index values of interest.
+are stored in an ``IOBTree``. ``repoze.catalog`` in used to
+index values of interest. ``souper.plone`` is based on the framework 
+independent base package `souper <https://github.com/bluedynamics/souper>`_.
 
-``souper.plone`` is no out-of-the-box package. It addresses developers
+``souper.plone`` is no out-of-the-box package! It addresses developers
 with the need to solve the problem to store tiny entities of mass-data, where
 heavy weight Archetypes or Dexterity are too much effort and are to slow. I.e
 if you need a queryable container for non-CMSish content, like votes, data from
@@ -20,8 +21,11 @@ across multiple independent Plone instances.
 A control-panel provides actions to rebuild, reindex and move Soups around.
 
 
+
 Usage
 =====
+
+XXX UPDATE ME
 
 ``SoupData`` objects are stored as annotation to an object providing the
 ``ISoupAnnotatable`` interface.
