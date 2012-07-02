@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<object name="portal_controlpanel">
+  <configlet title="Soup Maintenance"
+             action_id="Soup_Maintenance"
+	  		 appId="souper.plone"
+			 category="Products"
+			 condition_expr=""
+			 url_expr="string:${portal_url}/soup-controlpanel"
+			 icon_expr="string:${portal_url}/++resource++soup_icon.gif"
+			 visible="True">
+    <permission>Manage portal</permission>
+  </configlet>
+</object>

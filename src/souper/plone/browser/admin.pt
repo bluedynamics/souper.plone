@@ -1,0 +1,94 @@
+<h1>Soup Administration</h1>
+
+<div class="portalMessage info"
+     tal:condition="view/info"
+     tal:content="view/info">
+  message
+</div>
+
+<table style="border-spacing:0;border-collapse:collapse;"> 
+  <tr>
+    <th>id/ path</th>
+    <th>records</th>
+    <th colspan="3">management</th>
+  </tr>
+  <tr tal:repeat="soup view/existing_soups">
+    <td style="border: #333 1px solid;">
+      <strong tal:content="soup">soupid</strong><br />
+      <span tal:replace="python: view.storage_path(soup)">/</span>
+    </td>
+    <td  style="border: #333 1px solid; text-align: right;" >
+	  <span tal:content="python: view.count(soup)">
+	        	#
+	  </span>
+    </td>
+    <td style="border: #333 1px solid;">
+      <a href="#" title="This may take a while!!!"
+         tal:attributes="href python:'@@reindex_soup?id=%s' % soup">
+        reindex<br />catalog
+      </a>
+    </td>
+    <td style="border: #333 1px solid;">
+      <a href="#" title="This may take a while!!!"
+         tal:attributes="href python:'@@rebuild_soup?id=%s' % soup">
+        rebuild<br />catalog
+      </a>
+    </td>
+    <td style="border: #333 1px solid;">
+      <a href="#" title="This may take a while!!!"
+         tal:attributes="href python:'@@rebuild_length?id=%s' % soup">
+        recalculate<br />length
+      </a>
+    </td>
+  </tr>
+</table>
+
+<hr />
+
+<h3>Manage Soup Data Location</h3>
+
+<form action="@@move_storage" method="post">
+  
+  <dl>
+    <dt>
+      <input type="radio" name="moveormount" value="move" checked="checked"/>
+      move
+    </dt> 
+    <dd>
+      Moves soup storage data elsewhere relative to ISoupAnnotatable
+      object. This way you can put a soup with its records into a
+      separate ZODB mount point. Move will in fact clone the soup with a deep
+      copy. This way all data will reside at the new location, i.e. if the
+      location is a separate mount point.
+    </dd>
+    <dt>
+      <input type="radio" name="moveormount" value="mount" />
+      mount
+    </dt>
+    <dd>
+      Point to an existing soup at a given path. This makes sense if you want
+      to point the soup to an existing mount-point. If there is already data 
+      at the new location, it is kept and wont be touched while this operation.
+    </dd>
+  </dl>  
+    
+  <div class="field">
+    <label for="field-select-id">Soup</label>
+    <select id="field-select-id" name="id">
+      <option tal:repeat="soup view/existing_soups"
+              tal:content="soup">
+        soup_id
+      </option>
+    </select>
+  </div>
+      
+  <div class="field">
+    <label for="field-select-path">Path</label>
+    /<input type="text" name="path" />
+  </div>
+  
+  <div class="field">
+    <input type="submit" value="move" />
+  </div>
+
+</form>

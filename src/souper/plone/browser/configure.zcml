@@ -1,0 +1,69 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:zcml="http://namespaces.zope.org/zcml"
+           xmlns:browser="http://namespaces.zope.org/browser">
+           
+  <include package="Products.CMFCore" file="permissions.zcml" />           
+
+  <browser:resource
+    name="soup_icon.gif"
+	file="soup_icon.gif"
+  />
+  
+  <browser:page
+    for="*"
+    name="soupadmin"
+	class=".views.SoupAdmin"
+	permission="cmf.ManagePortal"
+	template="admin.pt"
+  />
+  
+  <browser:page
+    for="*"
+    name="reindex_soup"
+    class=".views.SoupAdmin"
+	attribute="reindex_soup"
+    permission="cmf.ManagePortal"
+  />
+  
+  <browser:page
+    for="*"
+    name="rebuild_soup"
+    class=".views.SoupAdmin"
+    attribute="rebuild_soup"
+    permission="cmf.ManagePortal"
+  />
+    
+  <browser:page
+    for="*"
+    name="move_storage"
+    class=".views.SoupAdmin"
+    attribute="move_storage"
+    permission="cmf.ManagePortal"
+  />
+
+  <browser:page
+    for="*"
+    name="rebuild_length"
+    class=".views.SoupAdmin"
+    attribute="rebuild_length"
+    permission="cmf.ManagePortal"
+  />
+  
+  <!-- zope view -->
+  <browser:page
+    for="*"
+    name="soupadministration"
+    permission="cmf.ManagePortal"
+    template="soupadministration.pt"
+  />
+  
+  <!-- plone control panel -->
+  <browser:page
+    zcml:condition="installed Products.CMFPlone"
+	for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    name="soup-controlpanel"
+    permission="cmf.ManagePortal"
+    template="controlpanel.pt"
+  />
+
+</configure>

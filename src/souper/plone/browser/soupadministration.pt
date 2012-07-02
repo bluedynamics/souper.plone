@@ -1,0 +1,6 @@
+<html>
+  <title>Soup Administration</title>
+  <body>
+    <tal:admin replace="context/@@soupadmin" />
+  </body>
+</html>

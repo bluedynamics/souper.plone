@@ -1,0 +1,3 @@
+from .soup import (
+    ISoupAnnotatable,
+)
