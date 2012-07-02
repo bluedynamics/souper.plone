@@ -1,0 +1,23 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:zcml="http://namespaces.zope.org/zcml"
+           xmlns:genericsetup="http://namespaces.zope.org/genericsetup">
+
+  <include package=".browser" />
+  
+  <genericsetup:registerProfile
+    zcml:condition="installed Products.CMFPlone"
+    name="default"
+    title="Soup Storage Foundations and Control Panel"
+    directory="profile"
+    description="Souper Soup Powers for Plone"
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+  />
+
+<!--   
+  <adapter
+    zcml:condition="installed zopyx.txng3.core"
+    for=".interfaces.IRecord" 
+    factory=".ting.SoupIndexableContent" 
+  />
+ -->
+</configure>
