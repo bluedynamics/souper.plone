@@ -3,6 +3,7 @@ from Acquisition import (
     aq_inner,
     aq_parent,
 )
+from persistent.mapping import PersistentMapping
 from zope.interface import implementer
 from zope.annotation import IAnnotations
 from souper.interfaces import IStorageLocator
@@ -13,7 +14,7 @@ from souper.soup import (
 from souper.plone.interfaces import ISoupAnnotatable
 
 CACHE_PREFIX = 'soup_storage_%s'
-
+SOUPPATHS = 'SOUPPATHS'
 
 @implementer(IStorageLocator)
 class StorageLocator(object):
@@ -32,12 +33,21 @@ class StorageLocator(object):
                 raise AttributeError(u"Invalid soup context.")
 
     def storage(self, sid):
-        return self.locate(sid)
+        context = self.traverse(self.path(sid))
+        return self.soupdata(context, sid)
 
     def path(self, sid):
-        annotations = IAnnotations(self.root)
-        key = 'soup_path_%s' % sid
-        return annotations.get(key, '/')
+        paths = IAnnotations(self.root).get(SOUPPATHS, {})
+        return paths.get(sid, '/')
+
+    def set_path(self, sid, newpath):
+        self.traverse(newpath)  # check if newpath is ok
+        paths = IAnnotations(self.root).get(SOUPPATHS, None)
+        if paths is None:
+            paths = PersistentMapping()
+            IAnnotations(self.root)[SOUPPATHS] = paths
+        paths[sid] = newpath
+        self._invalidate_cache(sid)
 
     def traverse(self, path):
         obj = self.root
@@ -56,10 +66,6 @@ class StorageLocator(object):
         if not key in annotations:
             annotations[key] = SoupData()
         return annotations[key]
-
-    def locate(self, sid):
-        context = self.traverse(self.path(sid))
-        return self.soupdata(context, sid)
 
     def _invalidate_cache(self, sid):
         key = CACHE_PREFIX % sid

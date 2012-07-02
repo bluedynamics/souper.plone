@@ -17,7 +17,7 @@ We initialize a locator for this context::
     >>> locator = StorageLocator(plone)      
 
 By default the path is ``/`` for any soup - means the same object as the root
-object::
+object (path relative to ``ISoupAnnotatable``)::
 
     >>> path = locator.path('mysoup')
     >>> path
@@ -28,16 +28,36 @@ So traverse has to return the plone site itself::
     >>> locator.traverse(path)
     <PloneSite at /plone>
 
-An empty soup is created at the first access::
+The second step now is to get the soupdata from an annotation. An empty soup is
+created at the first access::
 
-    >>> locator.locate('mysoup')
+    >>> locator.storage('mysoup')
     <souper.soup.SoupData object at 0x...>
 
 But we never need the SoupData object itself, we want the soup. Thus theres is
 a handy function available to fetch the soup::
 
     >>> from souper.soup import get_soup
-    >>> soup = get_soup(plone, 'mysoup')
-    >>> soup
+    >>> get_soup(plone, 'mysoup')
     <souper.soup.Soup object at 0x...>
     
+Now lets check if this works still if we change the location of the soup::
+
+    >>> try:
+    ...    locator.set_path('otherssoup', '/subfolder')
+    ... except KeyError, e:
+    ...    print e
+    'subfolder'
+
+    
+So first we need the subfolder::
+
+    >>> name = plone.invokeFactory('Folder', 'subfolder')
+    >>> locator.set_path('otherssoup', '/subfolder')
+    >>> locator.path('otherssoup')
+    '/subfolder'
+
+    >>> get_soup(plone, 'othersoup')
+    <souper.soup.Soup object at 0x...>
+    
+

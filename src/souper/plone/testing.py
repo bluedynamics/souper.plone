@@ -1,10 +1,17 @@
 from plone.testing import z2
-from plone.app.testing import PloneSandboxLayer
-from plone.app.testing import PLONE_FIXTURE
-from plone.app.testing import IntegrationTesting
+from plone.app.testing import (
+    PloneSandboxLayer,
+    PLONE_INTEGRATION_TESTING,
+    IntegrationTesting,
+    TEST_USER_NAME,
+    TEST_USER_ID,
+    login,
+    setRoles,
+)
+
 
 class SoupFixture(PloneSandboxLayer):
-    defaultBases = (PLONE_FIXTURE,)
+    defaultBases = (PLONE_INTEGRATION_TESTING,)
 
     def setUpZope(self, app, configurationContext):
         import zopyx.txng3.core
@@ -16,6 +23,8 @@ class SoupFixture(PloneSandboxLayer):
 
     def setUpPloneSite(self, portal):
         self.applyProfile(portal, 'souper.plone:default')
+        setRoles(portal, TEST_USER_ID, ['Manager'])
+        login(portal, TEST_USER_NAME)
 
     def tearDownZope(self, app):
         z2.uninstallProduct(app, 'souper.plone')
