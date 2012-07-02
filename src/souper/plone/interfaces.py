@@ -1,12 +1,10 @@
-from zope.interface import (
-    Interface,
-    Attribute,
-)
+from zope.interface import Interface
+
 
 class ISouperLayer(Interface):
     """Browser Layer for soup related views"""
 
 
-class ISoupAnnotatable(Interface):
-    """Marker for persisting soup data.
+class ISoupRoot(Interface):
+    """Marker for root object used to persist soup mapping.
     """

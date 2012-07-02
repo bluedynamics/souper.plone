@@ -55,7 +55,7 @@
       move
     </dt> 
     <dd>
-      Moves soup storage data elsewhere relative to ISoupAnnotatable
+      Moves soup storage data elsewhere relative to ISoupRoot
       object. This way you can put a soup with its records into a
       separate ZODB mount point. Move will in fact clone the soup with a deep
       copy. This way all data will reside at the new location, i.e. if the

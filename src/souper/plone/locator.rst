@@ -7,9 +7,9 @@ Locating soups is a two-step process. First we need a root context, usally the
 Plone Site itself, on which we look for the path of a soup::
 
     >>> from zope.interface import alsoProvides
-    >>> from souper.plone.interfaces import ISoupAnnotatable    
+    >>> from souper.plone.interfaces import ISoupRoot    
     >>> plone = layer['portal']
-    >>> alsoProvides(plone, ISoupAnnotatable)
+    >>> alsoProvides(plone, ISoupRoot)
     
 We initialize a locator for this context::
 
@@ -17,7 +17,7 @@ We initialize a locator for this context::
     >>> locator = StorageLocator(plone)      
 
 By default the path is ``/`` for any soup - means the same object as the root
-object (path relative to ``ISoupAnnotatable``)::
+object (path relative to ``ISoupRoot``)::
 
     >>> path = locator.path('mysoup')
     >>> path
@@ -53,6 +53,9 @@ Now lets check if this works still if we change the location of the soup::
 So first we need the subfolder::
 
     >>> name = plone.invokeFactory('Folder', 'subfolder')
+    
+And now we can annotate soupdata to it::
+
     >>> locator.set_path('otherssoup', '/subfolder')
     >>> locator.path('otherssoup')
     '/subfolder'
@@ -60,4 +63,37 @@ So first we need the subfolder::
     >>> get_soup(plone, 'othersoup')
     <souper.soup.Soup object at 0x...>
     
+Move soup between locations
+===========================
+
+First some preparations, in order to add records we need a simple catalog::
+
+    >>> from zope.interface import implementer
+    >>> from zope.component import provideUtility
+    >>> from repoze.catalog.catalog import Catalog
+    >>> from repoze.catalog.indexes.field import CatalogFieldIndex    
+    >>> from souper.interfaces import ICatalogFactory
+    >>> from souper.soup import NodeAttributeIndexer
+    >>> @implementer(ICatalogFactory)
+    ... class MySoupCatalogFactory(object):
+    ...
+    ...     def __call__(self):
+    ...         catalog = Catalog()
+    ...         indexer = NodeAttributeIndexer('name')
+    ...         catalog['name'] = CatalogFieldIndex(indexer)
+    ...         return catalog
+    >>> provideUtility(MySoupCatalogFactory(), name="mysoup")
+ 
+ And add some records to ``mysoup``::
+
+    >>> soup = get_soup('mysoup', plone) 
+    >>> from souper.soup import Record
+    >>> record = Record()
+    >>> record.attrs['name'] = 'willi'
+    >>> intid = soup.add(record)
+    >>> record = Record()
+    >>> record.attrs['name'] = 'anneliese'
+    >>> intid = soup.add(record)
+
+
 
