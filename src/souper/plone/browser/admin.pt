@@ -6,7 +6,8 @@
   message
 </div>
 
-<table style="border-spacing:0;border-collapse:collapse;"> 
+<table style="border-spacing:0;border-collapse:collapse;"
+       tal:condition="view/existing_soups"> 
   <tr>
     <th>id/ path</th>
     <th>records</th>
@@ -42,6 +43,8 @@
     </td>
   </tr>
 </table>
+
+<p tal:condition="not: view/existing_soups">There are no soups available yet.</p>
 
 <hr />
 
