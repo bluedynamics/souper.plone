@@ -1,17 +1,18 @@
 <configure xmlns="http://namespaces.zope.org/zope"
-           xmlns:zcml="http://namespaces.zope.org/zcml"
            xmlns:browser="http://namespaces.zope.org/browser">
-           
-  <include package="Products.CMFCore" file="permissions.zcml" />           
 
+  <include package="Products.CMFCore" file="permissions.zcml" /> 
+             
   <browser:resource
     name="soup_icon.gif"
 	file="soup_icon.gif"
+	layer="..interfaces.ISouperLayer"
   />
-  
+
   <browser:page
     for="*"
     name="soupadmin"
+    layer="..interfaces.ISouperLayer"
 	class=".views.SoupAdmin"
 	permission="cmf.ManagePortal"
 	template="admin.pt"
@@ -20,6 +21,7 @@
   <browser:page
     for="*"
     name="reindex_soup"
+    layer="..interfaces.ISouperLayer"
     class=".views.SoupAdmin"
 	attribute="reindex_soup"
     permission="cmf.ManagePortal"
@@ -28,6 +30,7 @@
   <browser:page
     for="*"
     name="rebuild_soup"
+    layer="..interfaces.ISouperLayer"
     class=".views.SoupAdmin"
     attribute="rebuild_soup"
     permission="cmf.ManagePortal"
@@ -36,6 +39,7 @@
   <browser:page
     for="*"
     name="move_storage"
+    layer="..interfaces.ISouperLayer"
     class=".views.SoupAdmin"
     attribute="move_storage"
     permission="cmf.ManagePortal"
@@ -44,26 +48,26 @@
   <browser:page
     for="*"
     name="rebuild_length"
+    layer="..interfaces.ISouperLayer"
     class=".views.SoupAdmin"
     attribute="rebuild_length"
     permission="cmf.ManagePortal"
   />
   
-  <!-- zope view -->
   <browser:page
     for="*"
     name="soupadministration"
+    layer="..interfaces.ISouperLayer"
     permission="cmf.ManagePortal"
     template="soupadministration.pt"
   />
   
-  <!-- plone control panel -->
   <browser:page
-    zcml:condition="installed Products.CMFPlone"
 	for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    layer="..interfaces.ISouperLayer"
     name="soup-controlpanel"
     permission="cmf.ManagePortal"
     template="controlpanel.pt"
   />
-
+ 
 </configure>

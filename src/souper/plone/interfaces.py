@@ -4,7 +4,7 @@ from zope.interface import (
 )
 
 
-class ISoupLayer(Interface):
+class ISouperLayer(Interface):
     """Browser Layer for soup related views"""
 
 

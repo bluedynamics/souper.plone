@@ -1,9 +1,11 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:zcml="http://namespaces.zope.org/zcml"
            xmlns:genericsetup="http://namespaces.zope.org/genericsetup">
+           
+  <includeDependencies package="." />
 
   <include package=".browser" />
-  
+
   <genericsetup:registerProfile
     zcml:condition="installed Products.CMFPlone"
     name="default"
@@ -13,11 +15,9 @@
     provides="Products.GenericSetup.interfaces.EXTENSION"
   />
 
-<!--   
   <adapter
-    zcml:condition="installed zopyx.txng3.core"
-    for=".interfaces.IRecord" 
-    factory=".ting.SoupIndexableContent" 
+    for="*" 
+    factory=".locator.StorageLocator" 
   />
- -->
+ 
 </configure>
