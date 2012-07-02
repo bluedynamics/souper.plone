@@ -86,11 +86,18 @@ class StorageLocator(object):
         return annotations[key]
 
     def _invalidate_cache(self, sid):
+        """invalidates a cache on REQUEST
+        """
+        # XXX unused (at the moment)
         key = CACHE_PREFIX % sid
         if self.context.REQUEST.get(key):
             del self.context.REQUEST[key]
 
     def move(self, sid, target_path, force=False):
+        """moves soup with name ``sid`` to a other target object.
+        target_path is the relative path to soup root.
+        if force is true any existing soup with the same name is overwritten.
+        """
         source_obj = self.traverse(self.path(sid))
         source_annotations = IAnnotations(source_obj)
         source_data = self.storage(sid)
