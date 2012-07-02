@@ -7,7 +7,10 @@ from persistent.mapping import PersistentMapping
 from zope.interface import implementer
 from zope.annotation import IAnnotations
 from souper.interfaces import IStorageLocator
-from souper.soup import SoupData
+from souper.soup import (
+    SoupData,
+    get_soup
+)
 from souper.plone.interfaces import ISoupRoot
 
 CACHE_PREFIX = 'soup_storage_%s'
@@ -90,16 +93,15 @@ class StorageLocator(object):
         source_obj = self.traverse(self.path(sid))
         source_annotations = IAnnotations(source_obj)
         source_data = self.storage(sid)
-
         target_obj = self.traverse(target_path)
         target_annotations = IAnnotations(target_obj)
         datakey = SOUPKEY % sid
         if datakey in target_annotations and not force:
             raise KeyError('Annotation-Key %s already used at %s' %
                            (datakey, target_path))
-        target_data = self.soupdata(target_path)
-        for intid in source_data.data:
-            target_data.add(deepcopy(source_data.data[intid]))
         self.set_path(sid, target_path)
+        target_soup = get_soup(target_obj, sid)
+        for intid in source_data.data:
+            target_soup.add(deepcopy(source_data.data[intid]))
         del source_annotations[datakey]
         self._invalidate_cache(sid)

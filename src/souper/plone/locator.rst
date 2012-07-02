@@ -89,11 +89,16 @@ First some preparations, in order to add records we need a simple catalog::
     >>> soup = get_soup('mysoup', plone) 
     >>> from souper.soup import Record
     >>> record = Record()
-    >>> record.attrs['name'] = 'willi'
+    >>> record.attrs['name'] = 'Willi'
     >>> intid = soup.add(record)
     >>> record = Record()
-    >>> record.attrs['name'] = 'anneliese'
+    >>> record.attrs['name'] = 'Anneliese'
     >>> intid = soup.add(record)
+    >>> from repoze.catalog.query import Eq 
+    >>> [r for r in soup.query(Eq('name', 'Willi'))]
+    [<Record object 'None' at ...>]
 
+Now lets move this to subfolder::
 
+    >>> locator.move('mysoup', '/subfolder')
 
