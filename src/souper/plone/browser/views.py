@@ -1,12 +1,9 @@
 import transaction
 from Acquisition import aq_inner
 from zope.component import (
-    getUtility,
     getUtilitiesFor,
 )
-from zope.component.interfaces import ComponentLookupError
 from souper.interfaces import (
-    ISoup,
     ICatalogFactory,
     IStorageLocator,
 )
@@ -38,9 +35,9 @@ class SoupAdmin(BrowserView):
         url += '/soup-controlpanel?info=%s' % msg
         self.request.RESPONSE.redirect(url)
 
-    def storage_path(self, id):
+    def storage_path(self, sid):
         locator = IStorageLocator(self.context)
-        path = locator.path(id)
+        path = locator.path(sid)
         if not path.startswith('/'):
             path = '/' + path
         return path
@@ -68,8 +65,6 @@ class SoupAdmin(BrowserView):
         if not sid:
             return self.redirect_base(u'No id given')
         path = self.request.form.get('path')
-        if not path:
-            return self.redirect_base(u'No path given')
         locator = IStorageLocator(self.context)
         try:
             locator.traverse(path)
