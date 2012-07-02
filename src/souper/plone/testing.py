@@ -19,7 +19,6 @@ class SoupFixture(PloneSandboxLayer):
         self.loadZCML(package=zopyx.txng3.core)
         self.loadZCML(package=souper.plone)
         self.loadZCML(package=souper.plone.tests)
-        z2.installProduct(app, 'souper.plone')
 
     def setUpPloneSite(self, portal):
         self.applyProfile(portal, 'souper.plone:default')
@@ -27,7 +26,7 @@ class SoupFixture(PloneSandboxLayer):
         login(portal, TEST_USER_NAME)
 
     def tearDownZope(self, app):
-        z2.uninstallProduct(app, 'souper.plone')
+        pass
 
 
 SOUP_FIXTURE = SoupFixture()

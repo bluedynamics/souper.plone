@@ -4,8 +4,8 @@
   <include package="Products.CMFCore" file="permissions.zcml" /> 
              
   <browser:resource
-    name="soup_icon.gif"
-	file="soup_icon.gif"
+    name="souper_icon.png"
+	file="souper_icon.png"
 	layer="..interfaces.ISouperLayer"
   />
 

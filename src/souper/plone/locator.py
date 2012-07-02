@@ -40,7 +40,8 @@ class StorageLocator(object):
                 return obj
             obj = aq_parent(obj)
             if not obj:
-                raise AttributeError(u"Invalid soup context.")
+                raise AttributeError(u"Invalid soup context '%s;." %
+                                     self.context)
 
     def path(self, sid):
         """path to object with soupdata annotations for given soup id.
@@ -100,7 +101,8 @@ class StorageLocator(object):
             raise KeyError('Annotation-Key %s already used at %s' %
                            (datakey, target_path))
         self.set_path(sid, target_path)
-        target_soup = get_soup(target_obj, sid)
+        target_annotations[sid] = SoupData()
+        target_soup = get_soup(sid, self.context)
         for intid in source_data.data:
             target_soup.add(deepcopy(source_data.data[intid]))
         del source_annotations[datakey]

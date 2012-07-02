@@ -100,5 +100,15 @@ First some preparations, in order to add records we need a simple catalog::
 
 Now lets move this to subfolder::
 
+    >>> old_data = soup.data
     >>> locator.move('mysoup', '/subfolder')
+    >>> movedsoup = get_soup('mysoup', plone)
+    >>> movedsoup
+    <souper.soup.Soup object at 0x...>
+    
+    >>> movedsoup.data is not old_data  
+    True
 
+    >>> [r for r in movedsoup.query(Eq('name', 'Willi'))]
+    [<Record object 'None' at ...>]
+    

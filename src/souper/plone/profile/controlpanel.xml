@@ -6,7 +6,7 @@
 			 category="Products"
 			 condition_expr=""
 			 url_expr="string:${portal_url}/soup-controlpanel"
-			 icon_expr="string:${portal_url}/++resource++soup_icon.gif"
+			 icon_expr="string:${portal_url}/++resource++souper_icon.png"
 			 visible="True">
     <permission>Manage portal</permission>
   </configlet>
