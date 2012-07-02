@@ -1,3 +1,6 @@
+Locating the soup
+=================
+
 In Plone soups are annotated using IAnnotations.
 
 Locating soups is a two-step process. First we need a root context, usally the
@@ -31,9 +34,10 @@ An empty soup is created at the first access::
     <souper.soup.SoupData object at 0x...>
 
 But we never need the SoupData object itself, we want the soup. Thus theres is
-a handy fucntion available to fetch the soup::
+a handy function available to fetch the soup::
 
     >>> from souper.soup import get_soup
     >>> soup = get_soup(plone, 'mysoup')
     >>> soup
-        <souper.soup.Soup object at 0x...>
+    <souper.soup.Soup object at 0x...>
+    
