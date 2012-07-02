@@ -41,7 +41,7 @@ class StorageLocator(object):
 
     def traverse(self, path):
         obj = self.root
-        path = path.split('/')
+        path = [_ for _ in path.split('/') if _]
         for name in path:
             try:
                 obj = obj[name]

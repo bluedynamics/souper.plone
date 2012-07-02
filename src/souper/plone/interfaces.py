@@ -3,7 +3,6 @@ from zope.interface import (
     Attribute,
 )
 
-
 class ISouperLayer(Interface):
     """Browser Layer for soup related views"""
 
