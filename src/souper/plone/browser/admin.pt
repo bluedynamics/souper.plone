@@ -6,47 +6,50 @@
   message
 </div>
 
-<table style="border-spacing:0;border-collapse:collapse;"
-       tal:condition="view/existing_soups"> 
-  <tr>
-    <th>id/ path</th>
-    <th>records</th>
-    <th colspan="3">management</th>
-  </tr>
+<table class="listing"
+       tal:condition="view/existing_soups">
+  <thead> 
+    <tr>
+      <th>id/ path</th>
+      <th>records</th>
+      <th colspan="3">management</th>
+    </tr>
+ </thead>
+ <tbody>
   <tr tal:repeat="soup view/existing_soups">
-    <td style="border: #333 1px solid;">
+    <td>
       <strong tal:content="soup">soupid</strong><br />
       <span tal:replace="python: view.storage_path(soup)">/</span>
     </td>
-    <td  style="border: #333 1px solid; text-align: right;" >
+    <td>
 	  <span tal:content="python: view.count(soup)">
 	        	#
 	  </span>
     </td>
-    <td style="border: #333 1px solid;">
+    <td>
       <a href="#" title="This may take a while!!!"
          tal:attributes="href python:'@@reindex_soup?id=%s' % soup">
         reindex<br />catalog
       </a>
     </td>
-    <td style="border: #333 1px solid;">
+    <td>
       <a href="#" title="This may take a while!!!"
          tal:attributes="href python:'@@rebuild_soup?id=%s' % soup">
         rebuild<br />catalog
       </a>
     </td>
-    <td style="border: #333 1px solid;">
+    <td>
       <a href="#" title="This may take a while!!!"
          tal:attributes="href python:'@@rebuild_length?id=%s' % soup">
         recalculate<br />length
       </a>
     </td>
   </tr>
+  </tbody>
 </table>
 
 <p tal:condition="not: view/existing_soups">There are no soups available yet.</p>
 
-<hr />
 
 <h3>Manage Soup Data Location</h3>
 
