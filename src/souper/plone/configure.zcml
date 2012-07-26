@@ -6,6 +6,10 @@
 
   <include package=".browser" />
 
+  <class class="Products.CMFPlone.Portal.PloneSite">
+       <implements interface="souper.plone.interfaces.ISoupRoot" />
+  </class>
+  
   <genericsetup:registerProfile
     zcml:condition="installed Products.CMFPlone"
     name="default"
