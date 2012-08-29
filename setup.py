@@ -1,8 +1,9 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = "1.0"
-shortdesc = "Container for many lightweight queryable Records for Plone"
+version = "1.0-beta1"
+shortdesc = i
+"Plone Souper Integration: Container for many lightweight queryable Records"
 longdesc = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 longdesc += open(os.path.join(os.path.dirname(__file__), 'HISTORY.rst')).read()
 longdesc += open(os.path.join(os.path.dirname(__file__), 'LICENSE.rst')).read()
@@ -23,7 +24,7 @@ setup(name='souper.plone',
             'Intended Audience :: Developers',
             'Topic :: Software Development :: Libraries :: Python Modules'
       ], # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
-      keywords='container data record catalog txng3',
+      keywords='container data record catalog',
       author='BlueDynamics Alliance',
       author_email='dev@bluedynamics.com',
       url='http://pypi.python.org/pypi/souper.plone',
@@ -41,10 +42,6 @@ setup(name='souper.plone',
       extras_require={
           'test': [
               'interlude',
-              'zopyx.txng3.core',
           ],
-          'txng': [
-              'zopyx.txng3.core',
-          ]
       },
       )
