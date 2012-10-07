@@ -2,12 +2,12 @@
 History
 =======
 
-1.0-beta2
----------
+1.0
+---
 
 - added missing MANIFEST.in [jensens]
 
 1.0-beta
 --------
 
-- make it work [jensens, rnix, et al]
+- make it work [rnix, jensens, et al]

@@ -15,6 +15,7 @@ across multiple independent Plone instances!
 
 A control-panel provides actions to rebuild, reindex and move Soups around.
 
+
 Usage
 =====
 
@@ -43,6 +44,7 @@ query and maintain them.
 For convinience ``souper.plone`` installs a control-panel where one can reindex
 and rebuild distinct soups. 
 
+
 Source Code
 ===========
 
@@ -51,15 +53,17 @@ The sources are in a GIT DVCS with its main branches at
 
 We'd be happy to see many forks and pull-requests to make souper even better.
 
-Maintainers are Jens Klein, Robert Niederreiter and the BlueDynamics Alliance
+Maintainers are Robert Niederreiter, Jens Klein and the BlueDynamics Alliance
 developer team. We appreciate any contribution and if a release is needed
 to be done on pypi, please just contact one of us
 `dev@bluedynamics dot com <mailto:dev@bluedynamics.com>`_
 
+
 Contributors
 ============
 
-- Jens W. Klein <jk@kleinundpartner.at>
-- Robert Niederreiter <office@squarewave.com>
-- Sven Plage
+- Robert Niederreiter <rnix [at] squarewave [dot] at>
 
+- Jens W. Klein <jk [at] kleinundpartner [dot] at>
+
+- Sven Plage
