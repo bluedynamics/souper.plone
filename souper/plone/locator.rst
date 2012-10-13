@@ -84,9 +84,9 @@ First some preparations, in order to add records we need a simple catalog::
     ...         return catalog
     >>> provideUtility(MySoupCatalogFactory(), name="mysoup")
  
- And add some records to ``mysoup``::
+And add some records to ``mysoup``::
 
-    >>> soup = get_soup('mysoup', plone) 
+    >>> soup = get_soup(plone, 'mysoup') 
     >>> from souper.soup import Record
     >>> record = Record()
     >>> record.attrs['name'] = 'Willi'
@@ -102,7 +102,7 @@ Now lets move this to subfolder::
 
     >>> old_data = soup.data
     >>> locator.move('mysoup', '/subfolder')
-    >>> movedsoup = get_soup('mysoup', plone)
+    >>> movedsoup = get_soup(plone, 'mysoup')
     >>> movedsoup
     <souper.soup.Soup object at 0x...>
     
