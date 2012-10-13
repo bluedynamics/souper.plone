@@ -3,7 +3,7 @@ Locating the soup
 
 In Plone soups are annotated using IAnnotations.
 
-Locating soups is a two-step process. First we need a root context, usally the
+Locating soups is a two-step process. First we need a root context, usually the
 Plone Site itself, on which we look for the path of a soup::
 
     >>> from zope.interface import alsoProvides
@@ -23,7 +23,7 @@ object (path relative to ``ISoupRoot``)::
     >>> path
     '/'
 
-So traverse has to return the plone site itself::
+So traverse has to return the Plone site itself::
 
     >>> locator.traverse(path)
     <PloneSite at /plone>
