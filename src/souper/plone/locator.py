@@ -32,7 +32,7 @@ class StorageLocator(object):
 
     @property
     def root(self):
-        """find the root in the soup, place where pathes mapping is located.
+        """ Find the root in the soup, place where path's mapping is located.
         """
         obj = aq_inner(self.context)
         while True:
