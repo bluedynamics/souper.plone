@@ -38,7 +38,7 @@ But we never need the SoupData object itself, we want the soup. Thus theres is
 a handy function available to fetch the soup::
 
     >>> from souper.soup import get_soup
-    >>> get_soup(plone, 'mysoup')
+    >>> get_soup('mysoup', plone)
     <souper.soup.Soup object at 0x...>
     
 Now lets check if this works still if we change the location of the soup::
@@ -60,7 +60,7 @@ And now we can annotate soupdata to it::
     >>> locator.path('otherssoup')
     '/subfolder'
 
-    >>> get_soup(plone, 'othersoup')
+    >>> get_soup('othersoup', plone)
     <souper.soup.Soup object at 0x...>
     
 Move soup between locations
@@ -86,7 +86,7 @@ First some preparations, in order to add records we need a simple catalog::
  
 And add some records to ``mysoup``::
 
-    >>> soup = get_soup(plone, 'mysoup') 
+    >>> soup = get_soup('mysoup', plone) 
     >>> from souper.soup import Record
     >>> record = Record()
     >>> record.attrs['name'] = 'Willi'
@@ -102,7 +102,7 @@ Now lets move this to subfolder::
 
     >>> old_data = soup.data
     >>> locator.move('mysoup', '/subfolder')
-    >>> movedsoup = get_soup(plone, 'mysoup')
+    >>> movedsoup = get_soup('mysoup', plone)
     >>> movedsoup
     <souper.soup.Soup object at 0x...>
     

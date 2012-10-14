@@ -31,7 +31,7 @@ stored as an annotation. This all happens fully transparently.
 So to get the soup, one simply needs to do::
 
     >>> from souper.soup import get_soup
-    >>> soup = get_soup(context, 'my_soup_id')
+    >>> soup = get_soup('my_soup_id', context)
     >>> soup
     <souper.soup.Soup at 0x...>
 
