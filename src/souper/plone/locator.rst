@@ -3,7 +3,7 @@ Locating the soup
 
 In Plone soups are annotated using IAnnotations.
 
-Locating soups is a two-step process. First we need a root context, usally the
+Locating soups is a two-step process. First we need a root context, usually the
 Plone Site itself, on which we look for the path of a soup::
 
     >>> from zope.interface import alsoProvides
@@ -23,7 +23,7 @@ object (path relative to ``ISoupRoot``)::
     >>> path
     '/'
 
-So traverse has to return the plone site itself::
+So traverse has to return the Plone site itself::
 
     >>> locator.traverse(path)
     <PloneSite at /plone>
@@ -75,8 +75,8 @@ First some preparations, in order to add records we need a simple catalog::
     >>> from souper.interfaces import ICatalogFactory
     >>> from souper.soup import NodeAttributeIndexer
     >>> @implementer(ICatalogFactory)
-    ... class MySoupCatalogFactory(object):
-    ...
+    ... class MySoupCatalogFactory(object, ignored_context):
+    ...     # souper/soup.py(79) assumes that some context is passed
     ...     def __call__(self):
     ...         catalog = Catalog()
     ...         indexer = NodeAttributeIndexer('name')
@@ -84,9 +84,9 @@ First some preparations, in order to add records we need a simple catalog::
     ...         return catalog
     >>> provideUtility(MySoupCatalogFactory(), name="mysoup")
  
- And add some records to ``mysoup``::
+And add some records to ``mysoup``::
 
-    >>> soup = get_soup('mysoup', plone) 
+    >>> soup = get_soup(plone, 'mysoup') 
     >>> from souper.soup import Record
     >>> record = Record()
     >>> record.attrs['name'] = 'Willi'
@@ -102,7 +102,7 @@ Now lets move this to subfolder::
 
     >>> old_data = soup.data
     >>> locator.move('mysoup', '/subfolder')
-    >>> movedsoup = get_soup('mysoup', plone)
+    >>> movedsoup = get_soup(plone, 'mysoup')
     >>> movedsoup
     <souper.soup.Soup object at 0x...>
     
