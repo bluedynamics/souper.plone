@@ -75,9 +75,8 @@ First some preparations, in order to add records we need a simple catalog::
     >>> from souper.interfaces import ICatalogFactory
     >>> from souper.soup import NodeAttributeIndexer
     >>> @implementer(ICatalogFactory)
-    ... class MySoupCatalogFactory(object, ignored_context):
-    ...     # souper/soup.py(79) assumes that some context is passed
-    ...     def __call__(self):
+    ... class MySoupCatalogFactory(object):
+    ...     def __call__(self, context):
     ...         catalog = Catalog()
     ...         indexer = NodeAttributeIndexer('name')
     ...         catalog['name'] = CatalogFieldIndex(indexer)

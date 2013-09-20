@@ -41,6 +41,7 @@ setup(name='souper.plone',
       extras_require={
           'test': [
               'interlude',
+              'zopyx.txng3.core',
           ],
       },
       )
