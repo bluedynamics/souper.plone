@@ -57,7 +57,7 @@ class SoupAdmin(BrowserView):
             return self.redirect_base('No soup id given')
         soup = get_soup(sid, self.context)
         soup.rebuild()
-        msg = '%s rebuilt.' % id
+        msg = '%s rebuilt.' % sid
         return self.redirect_base(msg)
 
     def move_storage(self):
@@ -75,11 +75,12 @@ class SoupAdmin(BrowserView):
             locator.move(sid, path)
             transaction.commit()
             return self.redirect_base(u'Moved storage of %s to %s' %
-                                      (id, path))
+                                      (sid, path))
         elif method == "mount":
             locator.set_path(sid, path)
             transaction.commit()
-            return self.redirect_base(u'Mounted storage %s to %s' % (id, path))
+            return self.redirect_base(u'Mounted storage %s to %s' %
+                                      (sid, path))
         else:
             return self.redirect_base(u'Invalid action (move or mount only)')
 
@@ -91,4 +92,5 @@ class SoupAdmin(BrowserView):
         newlen = len(soup.storage.data)
         soup.storage.length.set(newlen)
         transaction.commit()
-        return self.redirect_base(u'Length of storage %s is %s' % (id, newlen))
+        return self.redirect_base(u'Length of storage %s is %s' %
+                                  (sid, newlen))

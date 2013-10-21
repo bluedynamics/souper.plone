@@ -1,14 +1,14 @@
 <h1>Soup Administration</h1>
 
-<div class="portalMessage info"
-     tal:condition="view/info"
-     tal:content="view/info">
-  message
-</div>
+<dl class="portalMessage info"
+     tal:condition="view/info">
+  <dt>Info</dt>
+  <dd tal:content="view/info">message</dd>
+</dl>
 
 <table class="listing"
        tal:condition="view/existing_soups">
-  <thead> 
+  <thead>
     <tr>
       <th>id/ path</th>
       <th>records</th>
@@ -22,9 +22,9 @@
       <span tal:replace="python: view.storage_path(soup)">/</span>
     </td>
     <td>
-	  <span tal:content="python: view.count(soup)">
-	        	#
-	  </span>
+      <span tal:content="python: view.count(soup)">
+                #
+      </span>
     </td>
     <td>
       <a href="#" title="This may take a while!!!"
@@ -54,12 +54,12 @@
 <h3>Manage Soup Data Location</h3>
 
 <form action="@@move_storage" method="post">
-  
+
   <dl>
     <dt>
       <input type="radio" name="moveormount" value="move" checked="checked"/>
       move
-    </dt> 
+    </dt>
     <dd>
       Moves soup storage data elsewhere relative to ISoupRoot
       object. This way you can put a soup with its records into a
@@ -73,11 +73,11 @@
     </dt>
     <dd>
       Point to an existing soup at a given path. This makes sense if you want
-      to point the soup to an existing mount-point. If there is already data 
+      to point the soup to an existing mount-point. If there is already data
       at the new location, it is kept and wont be touched while this operation.
     </dd>
-  </dl>  
-    
+  </dl>
+
   <div class="field">
     <label for="field-select-id">Soup</label>
     <select id="field-select-id" name="id">
@@ -87,12 +87,12 @@
       </option>
     </select>
   </div>
-      
+
   <div class="field">
     <label for="field-select-path">Path</label>
     /<input type="text" name="path" />
   </div>
-  
+
   <div class="field">
     <input type="submit" value="move" />
   </div>
