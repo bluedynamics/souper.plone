@@ -63,8 +63,8 @@ to be done on pypi, please just contact one of us
 Contributors
 ============
 
-- Robert Niederreiter <rnix [at] squarewave [dot] at>
-
-- Jens W. Klein <jk [at] kleinundpartner [dot] at>
-
+- Robert Niederreiter
+- Jens W. Klein
 - Sven Plage
+- Jean Jordaan
+- Peter Mathis

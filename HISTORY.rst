@@ -2,12 +2,34 @@
 History
 =======
 
+1.1
+---
+
+- Plone conform status message markup
+  [petschki]
+
+- Fix id in status message
+  [petschki]
+
+- Fix tests
+  [rnix]
+
+- Make ``get_soup`` consistent
+  [jean]
+
+- Revise documentation
+  [jean]
+
+
 1.0
 ---
 
-- added missing MANIFEST.in [jensens]
+- Added missing MANIFEST.in
+  [jensens]
+
 
 1.0-beta
 --------
 
-- make it work [rnix, jensens, et al]
+- Make it work
+  [rnix, jensens, et al]
