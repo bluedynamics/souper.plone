@@ -1,14 +1,14 @@
 Overview
 ========
 
-``souper.plone`` integrates `souper <http://pypi.python.org/pypi/souper>`_ 
-with `Plone <http://plone.org>`_ 
+``souper.plone`` integrates `souper <http://pypi.python.org/pypi/souper>`_
+with `Plone <http://plone.org>`_
 
 ``souper.plone`` helps developers who need to store many small data records,
 where heavy-weight Archetypes or Dexterity content types are too much effort
 and are too slow.  E.g. if you need a queryable container for non-CMSish
 content, like votes, data from a poll, orders in a webshop, measuring data,
-or the like.  
+or the like.
 
 A Soup-container can be moved to an own ZODB mount-point and may be shared
 across multiple independent Plone instances!
@@ -19,7 +19,7 @@ A control-panel provides actions to rebuild, reindex and move Soups around.
 Usage
 =====
 
-``souper.plone`` adds some convenience for Plone Add-On developers. It 
+``souper.plone`` adds some convenience for Plone Add-On developers. It
 provides a storage locator working like so:
 
 A ``souper.soup`` is looked up by ``id`` and needs a context.
@@ -43,7 +43,7 @@ Consult the ``souper.plone`` documentation to learn how.
 Over there it's also documented how to add records, query and maintain them.
 
 For convenience ``souper.plone`` installs a control-panel where one can
-reindex and rebuild distinct soups. 
+reindex and rebuild distinct soups.
 
 
 Source Code
@@ -68,3 +68,5 @@ Contributors
 - Sven Plage
 - Jean Jordaan
 - Peter Mathis
+- Harald Friessnegger
+

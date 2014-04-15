@@ -19,7 +19,7 @@
   />
   
   <browser:page
-    for="*"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
     name="reindex_soup"
     layer="..interfaces.ISouperLayer"
     class=".views.SoupAdmin"
@@ -28,7 +28,7 @@
   />
   
   <browser:page
-    for="*"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
     name="rebuild_soup"
     layer="..interfaces.ISouperLayer"
     class=".views.SoupAdmin"
@@ -37,7 +37,7 @@
   />
     
   <browser:page
-    for="*"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
     name="move_storage"
     layer="..interfaces.ISouperLayer"
     class=".views.SoupAdmin"
@@ -46,14 +46,23 @@
   />
 
   <browser:page
-    for="*"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
     name="rebuild_length"
     layer="..interfaces.ISouperLayer"
     class=".views.SoupAdmin"
     attribute="rebuild_length"
     permission="cmf.ManagePortal"
   />
-  
+
+  <browser:page
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    name="clear_soup"
+    layer="..interfaces.ISouperLayer"
+    class=".views.SoupAdmin"
+    attribute="clear_soup"
+    permission="cmf.ManagePortal"
+  />
+    
   <browser:page
     for="*"
     name="soupadministration"
