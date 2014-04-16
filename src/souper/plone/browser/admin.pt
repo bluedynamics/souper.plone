@@ -12,7 +12,7 @@
     <tr>
       <th>id/ path</th>
       <th>records</th>
-      <th colspan="3">management</th>
+      <th colspan="4">management</th>
     </tr>
  </thead>
  <tbody>
@@ -44,9 +44,33 @@
         recalculate<br />length
       </a>
     </td>
+    <td>
+      <a href="#" class="clearSoup" title="Can not be undone!!!"
+         tal:attributes="href python:'@@clear_soup?id=%s' % soup">
+        clear<br />soup
+      </a>
+    </td>    
   </tr>
   </tbody>
 </table>
+<script>
+  (function($) {
+    $(function() {
+
+      $('.clearSoup').click(function(e){
+        var r = confirm("Clearing the soup will delete all items and cannot be undone.");
+        
+        if (r != true) {
+          e.preventDefault();
+        }
+      });
+      
+    });
+  })(jQuery);
+
+ 
+</script>
+
 
 <p tal:condition="not: view/existing_soups">There are no soups available yet.</p>
 
