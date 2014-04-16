@@ -68,7 +68,7 @@ class SoupAdmin(BrowserView):
         soup.clear()
         msg = '%s cleared.' % sid
         return self.redirect_base(msg)
-           
+
     def move_storage(self):
         sid = self.request.form.get('id')
         if not sid:

@@ -2,11 +2,12 @@
 History
 =======
 
-dev
----
+1.2dev
+------
 
-- Add `clear soup` functionality to the controlpanel
+- Add ``clear soup`` functionality to the controlpanel.
   [fRiSi]
+
 
 1.1
 ---

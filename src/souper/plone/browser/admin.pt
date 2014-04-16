@@ -1,7 +1,7 @@
 <h1>Soup Administration</h1>
 
 <dl class="portalMessage info"
-     tal:condition="view/info">
+    tal:condition="view/info">
   <dt>Info</dt>
   <dd tal:content="view/info">message</dd>
 </dl>
@@ -14,66 +14,63 @@
       <th>records</th>
       <th colspan="4">management</th>
     </tr>
- </thead>
- <tbody>
-  <tr tal:repeat="soup view/existing_soups">
-    <td>
-      <strong tal:content="soup">soupid</strong><br />
-      <span tal:replace="python: view.storage_path(soup)">/</span>
-    </td>
-    <td>
-      <span tal:content="python: view.count(soup)">
-                #
-      </span>
-    </td>
-    <td>
-      <a href="#" title="This may take a while!!!"
-         tal:attributes="href python:'@@reindex_soup?id=%s' % soup">
-        reindex<br />catalog
-      </a>
-    </td>
-    <td>
-      <a href="#" title="This may take a while!!!"
-         tal:attributes="href python:'@@rebuild_soup?id=%s' % soup">
-        rebuild<br />catalog
-      </a>
-    </td>
-    <td>
-      <a href="#" title="This may take a while!!!"
-         tal:attributes="href python:'@@rebuild_length?id=%s' % soup">
-        recalculate<br />length
-      </a>
-    </td>
-    <td>
-      <a href="#" class="clearSoup" title="Can not be undone!!!"
-         tal:attributes="href python:'@@clear_soup?id=%s' % soup">
-        clear<br />soup
-      </a>
-    </td>    
-  </tr>
+  </thead>
+  <tbody>
+    <tr tal:repeat="soup view/existing_soups">
+      <td>
+        <strong tal:content="soup">soupid</strong><br />
+        <span tal:replace="python: view.storage_path(soup)">/</span>
+      </td>
+      <td>
+        <span tal:content="python: view.count(soup)">#</span>
+      </td>
+      <td>
+        <a href="#"
+           title="This may take a while!!!"
+           tal:attributes="href python:'@@reindex_soup?id=%s' % soup">
+          reindex<br />catalog
+        </a>
+      </td>
+      <td>
+        <a href="#" title="This may take a while!!!"
+           tal:attributes="href python:'@@rebuild_soup?id=%s' % soup">
+          rebuild<br />catalog
+        </a>
+      </td>
+      <td>
+        <a href="#" title="This may take a while!!!"
+           tal:attributes="href python:'@@rebuild_length?id=%s' % soup">
+          recalculate<br />length
+        </a>
+      </td>
+      <td>
+        <a href="#" class="clearSoup" title="Can not be undone!!!"
+           tal:attributes="href python:'@@clear_soup?id=%s' % soup">
+          clear<br />soup
+        </a>
+      </td>
+    </tr>
   </tbody>
 </table>
+
 <script>
-  (function($) {
-    $(function() {
-
-      $('.clearSoup').click(function(e){
-        var r = confirm("Clearing the soup will delete all items and cannot be undone.");
-        
-        if (r != true) {
-          e.preventDefault();
-        }
-      });
-      
-    });
-  })(jQuery);
-
- 
+    (function($) {
+        $(function() {
+            $('.clearSoup').click(function(e) {
+                var msg = "Clearing the soup will delete all items " +
+                          "and cannot be undone.";
+                var confirmed = confirm(msg);
+                if (!confirmed) {
+                    e.preventDefault();
+                }
+            });
+        });
+    })(jQuery);
 </script>
 
-
-<p tal:condition="not: view/existing_soups">There are no soups available yet.</p>
-
+<p tal:condition="not: view/existing_soups">
+  There are no soups available yet.
+</p>
 
 <h3>Manage Soup Data Location</h3>
 
