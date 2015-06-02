@@ -35,7 +35,7 @@ setup(name='souper.plone',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'Plone',
+          'Products.CMFPlone',
           'souper',
       ],
       extras_require={
