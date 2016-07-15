@@ -44,4 +44,9 @@ setup(name='souper.plone',
               'zopyx.txng3.core',
           ],
       },
-      )
+      entry_points="""
+      # -*- Entry points: -*-
+      [z3c.autoinclude.plugin]
+      target = plone
+      """,
+)
