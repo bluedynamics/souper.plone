@@ -69,3 +69,4 @@ Contributors
 - Jean Jordaan
 - Peter Mathis
 - Harald Friessnegger
+- Gil Forcada Codinachs
