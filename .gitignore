@@ -14,3 +14,7 @@ parts/
 src/*.egg-info
 .tmp*
 var/
+lib/
+local/
+include/
+
