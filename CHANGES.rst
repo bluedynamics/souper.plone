@@ -2,6 +2,18 @@
 History
 =======
 
+1.2.1 (unreleased)
+------------------
+
+- Add entry point.
+  [gforcada]
+
+- Depend on Products.CMFPlone rather than Plone
+  [gforcada]
+
+- Add ZCML i18n domain.
+  [rnixx]
+
 1.2
 ---
 

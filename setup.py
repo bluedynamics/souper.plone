@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = "1.2"
+version = "1.2.1.dev0"
 shortdesc = \
 "Plone Souper Integration: Container for many lightweight queryable Records"
 longdesc = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
-longdesc += open(os.path.join(os.path.dirname(__file__), 'HISTORY.rst')).read()
+longdesc += open(os.path.join(os.path.dirname(__file__), 'CHANGES.rst')).read()
 longdesc += open(os.path.join(os.path.dirname(__file__), 'LICENSE.rst')).read()
 
 setup(name='souper.plone',
@@ -20,6 +20,8 @@ setup(name='souper.plone',
             'Framework :: Plone :: 4.1',
             'Framework :: Plone :: 4.2',
             'Framework :: Plone :: 4.3',
+            'Framework :: Plone :: 5.0',
+            'Framework :: Plone :: 5.1',
             'Intended Audience :: Developers',
             'Topic :: Software Development :: Libraries :: Python Modules'
       ], # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
