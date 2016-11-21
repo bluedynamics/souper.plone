@@ -1,3 +1,7 @@
+graft src/souper
+graft docs
 include *.rst
-recursive-include src *
-recursive-exclude src *.pyc *.pyo
+include bootstrap.sh
+include buildout.cfg
+global-exclude *.pyc
+
