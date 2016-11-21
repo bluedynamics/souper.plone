@@ -2,7 +2,7 @@
 History
 =======
 
-1.2.1 (unreleased)
+1.2.1 (2016-11-21)
 ------------------
 
 - Add entry point.
