@@ -25,29 +25,36 @@
         <span tal:content="python: view.count(soup)">#</span>
       </td>
       <td>
-        <a href="#"
-           title="This may take a while!!!"
-           tal:attributes="href python:'@@reindex_soup?id=%s' % soup">
-          reindex<br />catalog
-        </a>
+        <form action="" method="post" tal:attributes="action string:${here/portal_url}/@@reindex_soup">
+          <input type="hidden" name="id" value="" tal:attributes="value soup" />
+          <button type="submit" title="This may take a while!!!">
+            reindex<br />catalog
+          </button>
+        </form>
       </td>
       <td>
-        <a href="#" title="This may take a while!!!"
-           tal:attributes="href python:'@@rebuild_soup?id=%s' % soup">
-          rebuild<br />catalog
-        </a>
+        <form action="" method="post" tal:attributes="action string:${here/portal_url}/@@rebuild_soup">
+          <input type="hidden" name="id" value="" tal:attributes="value soup" />
+          <button type="submit" title="This may take a while!!!">
+            rebuild<br />catalog
+          </button>
+        </form>
       </td>
       <td>
-        <a href="#" title="This may take a while!!!"
-           tal:attributes="href python:'@@rebuild_length?id=%s' % soup">
-          recalculate<br />length
-        </a>
+        <form action="" method="post" tal:attributes="action string:${here/portal_url}/@@rebuild_length">
+          <input type="hidden" name="id" value="" tal:attributes="value soup" />
+          <button type="submit" title="This may take a while!!!">
+            recalculate<br />length
+          </button>
+        </form>
       </td>
       <td>
-        <a href="#" class="clearSoup" title="Can not be undone!!!"
-           tal:attributes="href python:'@@clear_soup?id=%s' % soup">
-          clear<br />soup
-        </a>
+        <form action="" method="post" tal:attributes="action string:${here/portal_url}/@@clear_soup">
+          <input type="hidden" name="id" value="" tal:attributes="value soup" />
+          <button type="submit" title="Can not be undone!!!">
+            clear<br />soup
+          </button>
+        </form>
       </td>
     </tr>
   </tbody>

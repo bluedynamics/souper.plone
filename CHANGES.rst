@@ -5,8 +5,8 @@ History
 1.2.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Convert links to forms in admin page.
+  [erral]
 
 1.2.1 (2016-11-21)
 ------------------
