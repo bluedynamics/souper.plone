@@ -15,7 +15,7 @@
     zcml:condition="installed Products.CMFPlone"
     name="default"
     title="Soup Storage Foundations and Control Panel"
-    directory="profile"
+    directory="profile/default"
     description="Souper Soup Powers for Plone"
     provides="Products.GenericSetup.interfaces.EXTENSION"
   />
