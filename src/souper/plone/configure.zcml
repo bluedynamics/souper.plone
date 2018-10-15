@@ -15,10 +15,25 @@
     zcml:condition="installed Products.CMFPlone"
     name="default"
     title="Soup Storage Foundations and Control Panel"
-    directory="profile"
+    directory="profile/default"
     description="Souper Soup Powers for Plone"
     provides="Products.GenericSetup.interfaces.EXTENSION"
   />
+
+  <genericsetup:registerProfile
+    zcml:condition="installed Products.CMFPlone"
+    name="uninstall"
+    title="Soup Storage Foundations and Control Panel [uninstall]"
+    directory="profile/uninstall"
+    description="Souper Soup Powers for Plone"
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+  />
+
+  <utility
+    factory=".setuphandlers.HiddenProfiles"
+    name="souper.plone"
+    provides="Products.CMFPlone.interfaces.INonInstallable"
+    />
 
   <adapter
     for="*" 
