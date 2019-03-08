@@ -29,13 +29,6 @@ install:
   - rm -rf $HOME/buildout-cache/eggs/plone.app.locales*
   - buildout -N -t 3 annotate
   - buildout -N -t 3 -c test-$PLONE_VERSION.cfg
-  - mkdir -p parts/test/_screenshots
-  - make install
-  - make clean all mode=release
-before_script:
-  - 'export DISPLAY=:99.0'
-  - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
-  - sleep 3
 script:
 # Run code-analysis, except on Python 3.6, which mysteriously fails to find zc.buildout.
   - python --version 2> /dev/stdout | grep 3.6 || bin/code-analysis
@@ -45,5 +38,3 @@ after_script:
 after_success:
   - pip install -q coveralls
   - coveralls
-notifications:
-  irc: irc.freenode.org#plone-testing
