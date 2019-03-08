@@ -7,14 +7,14 @@ Locating soups is a two-step process. First we need a root context, usually the
 Plone Site itself, on which we look for the path of a soup::
 
     >>> from zope.interface import alsoProvides
-    >>> from souper.plone.interfaces import ISoupRoot    
+    >>> from souper.plone.interfaces import ISoupRoot
     >>> plone = layer['portal']
     >>> alsoProvides(plone, ISoupRoot)
-    
+
 We initialize a locator for this context::
 
-    >>> from souper.plone.locator import StorageLocator 
-    >>> locator = StorageLocator(plone)      
+    >>> from souper.plone.locator import StorageLocator
+    >>> locator = StorageLocator(plone)
 
 By default the path is ``/`` for any soup - means the same object as the root
 object (path relative to ``ISoupRoot``)::
@@ -40,7 +40,7 @@ a handy function available to fetch the soup::
     >>> from souper.soup import get_soup
     >>> get_soup('mysoup', plone)
     <souper.soup.Soup object at 0x...>
-    
+
 Now lets check if this works still if we change the location of the soup::
 
     >>> try:
@@ -49,11 +49,11 @@ Now lets check if this works still if we change the location of the soup::
     ...    print e
     'subfolder'
 
-    
+
 So first we need the subfolder::
 
     >>> name = plone.invokeFactory('Folder', 'subfolder')
-    
+
 And now we can annotate soupdata to it::
 
     >>> locator.set_path('otherssoup', '/subfolder')
@@ -62,7 +62,7 @@ And now we can annotate soupdata to it::
 
     >>> get_soup('othersoup', plone)
     <souper.soup.Soup object at 0x...>
-    
+
 Move soup between locations
 ===========================
 
@@ -71,7 +71,7 @@ First some preparations, in order to add records we need a simple catalog::
     >>> from zope.interface import implementer
     >>> from zope.component import provideUtility
     >>> from repoze.catalog.catalog import Catalog
-    >>> from repoze.catalog.indexes.field import CatalogFieldIndex    
+    >>> from repoze.catalog.indexes.field import CatalogFieldIndex
     >>> from souper.interfaces import ICatalogFactory
     >>> from souper.soup import NodeAttributeIndexer
     >>> @implementer(ICatalogFactory)
@@ -82,10 +82,10 @@ First some preparations, in order to add records we need a simple catalog::
     ...         catalog['name'] = CatalogFieldIndex(indexer)
     ...         return catalog
     >>> provideUtility(MySoupCatalogFactory(), name="mysoup")
- 
+
 And add some records to ``mysoup``::
 
-    >>> soup = get_soup('mysoup', plone) 
+    >>> soup = get_soup('mysoup', plone)
     >>> from souper.soup import Record
     >>> record = Record()
     >>> record.attrs['name'] = 'Willi'
@@ -93,7 +93,7 @@ And add some records to ``mysoup``::
     >>> record = Record()
     >>> record.attrs['name'] = 'Anneliese'
     >>> intid = soup.add(record)
-    >>> from repoze.catalog.query import Eq 
+    >>> from repoze.catalog.query import Eq
     >>> [r for r in soup.query(Eq('name', 'Willi'))]
     [<Record object 'None' at ...>]
 
@@ -104,10 +104,10 @@ Now lets move this to subfolder::
     >>> movedsoup = get_soup('mysoup', plone)
     >>> movedsoup
     <souper.soup.Soup object at 0x...>
-    
-    >>> movedsoup.data is not old_data  
+
+    >>> movedsoup.data is not old_data
     True
 
     >>> [r for r in movedsoup.query(Eq('name', 'Willi'))]
     [<Record object 'None' at ...>]
-    
+

@@ -1,7 +1,7 @@
+from plone import api
 from plone.testing import z2
 from plone.app.testing import (
     PloneSandboxLayer,
-    PLONE_INTEGRATION_TESTING,
     IntegrationTesting,
     TEST_USER_NAME,
     TEST_USER_ID,
@@ -9,9 +9,20 @@ from plone.app.testing import (
     setRoles,
 )
 
+PLONE_VERSION = api.env.plone_version()
+
+if PLONE_VERSION < '5':
+    from plone.app.testing import PLONE_FIXTURE
+else:
+    from plone.app.contenttypes.testing import PLONE_APP_CONTENTTYPES_FIXTURE
+
 
 class SoupFixture(PloneSandboxLayer):
-    defaultBases = (PLONE_INTEGRATION_TESTING,)
+
+    if PLONE_VERSION < 5:
+        defaultBases = (PLONE_FIXTURE,)
+    else:
+        defaultBases = (PLONE_APP_CONTENTTYPES_FIXTURE,)
 
     def setUpZope(self, app, configurationContext):
         import zopyx.txng3.core
