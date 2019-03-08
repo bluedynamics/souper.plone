@@ -63,7 +63,7 @@ class SoupAdmin(BrowserView):
     def clear_soup(self):
         sid = self.request.form.get('id')
         if not sid:
-            return self.redirect_base('No soup id given!') 
+            return self.redirect_base('No soup id given!')
         soup = get_soup(sid, self.context)
         soup.clear()
         msg = '%s cleared.' % sid
@@ -83,12 +83,12 @@ class SoupAdmin(BrowserView):
         if method == 'move':
             locator.move(sid, path)
             transaction.commit()
-            return self.redirect_base(u'Moved storage of %s to %s' % 
+            return self.redirect_base(u'Moved storage of %s to %s' %
                                       (sid, path))
         elif method == "mount":
             locator.set_path(sid, path)
             transaction.commit()
-            return self.redirect_base(u'Mounted storage %s to %s' % 
+            return self.redirect_base(u'Mounted storage %s to %s' %
                                       (sid, path))
         else:
             return self.redirect_base(u'Invalid action (move or mount only)')
@@ -101,5 +101,5 @@ class SoupAdmin(BrowserView):
         newlen = len(soup.storage.data)
         soup.storage.length.set(newlen)
         transaction.commit()
-        return self.redirect_base(u'Length of storage %s is %s' % 
+        return self.redirect_base(u'Length of storage %s is %s' %
                                   (sid, newlen))
