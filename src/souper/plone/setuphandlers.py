@@ -11,4 +11,3 @@ class HiddenProfiles(object):
         return [
             u'souper.plone:uninstall',
         ]
-

@@ -19,17 +19,17 @@ TESTFILES = [
 def test_suite():
     suite = unittest.TestSuite()
     suite.addTests([
-            layered(
-                doctest.DocFileSuite(
-                    docfile,
-                    globs={'interact': interact,
-                           'pprint': pprint.pprint,
-                           'z2': z2,
-                           },
-                    optionflags=optionflags,
-                    ),
-                layer=SOUP_INTEGRATION_TESTING,
-                )
-            for docfile in TESTFILES
-            ])
+        layered(
+            doctest.DocFileSuite(
+                docfile,
+                globs={'interact': interact,
+                       'pprint': pprint.pprint,
+                       'z2': z2,
+                       },
+                optionflags=optionflags,
+            ),
+            layer=SOUP_INTEGRATION_TESTING,
+        )
+        for docfile in TESTFILES
+    ])
     return suite

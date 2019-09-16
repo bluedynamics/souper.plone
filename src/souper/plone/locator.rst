@@ -45,15 +45,16 @@ Now lets check if this works still if we change the location of the soup::
 
     >>> try:
     ...    locator.set_path('otherssoup', '/subfolder')
-    ... except KeyError, e:
-    ...    print e
+    ... except KeyError as e:
+    ...    print(e)
     'subfolder'
 
 
 So first we need the subfolder::
 
     >>> from plone import api
-    >>> name = api.content.create(type='Folder', id='subfolder')
+    >>> portal = api.portal.get()
+    >>> name = api.content.create(container=portal, type='Folder', id='subfolder')
 
 And now we can annotate soupdata to it::
 
