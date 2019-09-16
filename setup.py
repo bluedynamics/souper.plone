@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 import sys
 import os
 
-version = '1.3.0'
+version = '1.3.1.dev0'
 shortdesc = \
     "Plone Souper Integration: Container for many lightweight queryable Records"
 longdesc = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
