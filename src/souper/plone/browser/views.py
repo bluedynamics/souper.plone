@@ -1,15 +1,9 @@
 import transaction
 from Acquisition import aq_inner
-from zope.component import (
-    getUtilitiesFor,
-)
-from souper.interfaces import (
-    ICatalogFactory,
-    IStorageLocator,
-)
-from souper.soup import (
-    get_soup,
-)
+from zope.component import getUtilitiesFor
+from souper.interfaces import ICatalogFactory
+from souper.interfaces import IStorageLocator
+from souper.soup import get_soup
 from Products.Five import BrowserView
 
 

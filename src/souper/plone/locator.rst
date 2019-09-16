@@ -52,7 +52,8 @@ Now lets check if this works still if we change the location of the soup::
 
 So first we need the subfolder::
 
-    >>> name = plone.invokeFactory('Folder', 'subfolder')
+    >>> from plone import api
+    >>> name = api.content.create(type='Folder', id='subfolder')
 
 And now we can annotate soupdata to it::
 

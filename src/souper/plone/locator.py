@@ -1,16 +1,12 @@
 from copy import deepcopy
-from Acquisition import (
-    aq_inner,
-    aq_parent,
-)
+from Acquisition import aq_inner
+from Acquisition import aq_parent
 from persistent.mapping import PersistentMapping
 from zope.interface import implementer
 from zope.annotation import IAnnotations
 from souper.interfaces import IStorageLocator
-from souper.soup import (
-    SoupData,
-    get_soup
-)
+from souper.soup import SoupData
+from souper.soup import get_soup
 from souper.plone.interfaces import ISoupRoot
 
 CACHE_PREFIX = 'soup_storage_%s'

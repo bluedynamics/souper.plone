@@ -5,6 +5,9 @@ History
 1.2.2 (unreleased)
 ------------------
 
+- Python 2/3 compatibility
+  [agitator]
+
 - Convert links to forms in admin page.
   [erral]
 
