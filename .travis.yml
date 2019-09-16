@@ -1,0 +1,40 @@
+language: python
+sudo: false
+matrix:
+  include:
+    - python: "2.7"
+      env: PLONE_VERSION=4.3.x
+    - python: "2.7"
+      env: PLONE_VERSION=5.1.x
+    - python: "2.7"
+      env: PLONE_VERSION=5.2.x
+    - python: "3.6"
+      env: PLONE_VERSION=5.2.x
+    - python: "3.7"
+      env: PLONE_VERSION=5.2.x
+      dist: xenial
+      sudo: true
+cache:
+  pip: true
+  directories:
+    - $HOME/buildout-cache
+before_install:
+  - mkdir -p $HOME/buildout-cache/{eggs,downloads}
+  - mkdir $HOME/.buildout
+  - echo "[buildout]" > $HOME/.buildout/default.cfg
+  - echo "download-cache = $HOME/buildout-cache/downloads" >> $HOME/.buildout/default.cfg
+  - echo "eggs-directory = $HOME/buildout-cache/eggs" >> $HOME/.buildout/default.cfg
+  - pip install -r requirements-$PLONE_VERSION.txt
+install:
+  - rm -rf $HOME/buildout-cache/eggs/plone.app.locales*
+  - buildout -N -t 3 annotate
+  - buildout -N -t 3 -c test-$PLONE_VERSION.cfg
+script:
+# Run code-analysis, except on Python 3.6, which mysteriously fails to find zc.buildout.
+  - python --version 2> /dev/stdout | grep 3.6 || bin/code-analysis
+  - bin/test --all
+after_script:
+  - bin/createcoverage --output-dir=parts/test/coverage
+after_success:
+  - pip install -q coveralls
+  - coveralls
