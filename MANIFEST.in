@@ -1,7 +1,7 @@
 graft src/souper
 graft docs
 include *.rst
-include bootstrap.sh
-include buildout.cfg
+include *.cfg
+include *.txt
 global-exclude *.pyc
 
