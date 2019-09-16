@@ -77,7 +77,7 @@ class StorageLocator(object):
         """
         key = SOUPKEY % sid
         annotations = IAnnotations(obj)
-        if not key in annotations:
+        if key not in annotations:
             annotations[key] = SoupData()
         return annotations[key]
 
