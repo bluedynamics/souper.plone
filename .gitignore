@@ -12,6 +12,7 @@ parts/
 *.pyo
 .settings
 src/*.egg-info
+.python-version
 .tmp*
 var/
 lib/
