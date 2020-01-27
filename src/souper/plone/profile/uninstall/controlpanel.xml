@@ -2,4 +2,3 @@
 <object name="portal_controlpanel">
  <configlet action_id="Soup_Maintenance" remove="true" />
 </object>
-~
