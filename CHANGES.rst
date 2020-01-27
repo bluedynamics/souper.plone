@@ -5,7 +5,8 @@ History
 1.3.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Remove wrong character from uninstall profile.
+  [erral]
 
 
 1.3.0 (2019-09-16)
