@@ -2,15 +2,13 @@
            xmlns:zcml="http://namespaces.zope.org/zcml"
            xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
            i18n_domain="souper.plone">
-           
-  <includeDependencies package="." />
 
   <include package=".browser" />
 
   <class class="Products.CMFPlone.Portal.PloneSite">
        <implements interface="souper.plone.interfaces.ISoupRoot" />
   </class>
-  
+
   <genericsetup:registerProfile
     zcml:condition="installed Products.CMFPlone"
     name="default"
@@ -36,8 +34,8 @@
     />
 
   <adapter
-    for="*" 
-    factory=".locator.StorageLocator" 
+    for="*"
+    factory=".locator.StorageLocator"
   />
- 
+
 </configure>

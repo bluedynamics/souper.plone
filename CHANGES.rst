@@ -5,6 +5,9 @@ History
 1.3.1 (unreleased)
 ------------------
 
+- Do not load dependecies using z3c.autoinclude, because we do not have any.
+  [jensens]
+
 - Remove wrong character from uninstall profile.
   [erral]
 
