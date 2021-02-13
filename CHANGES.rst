@@ -2,7 +2,7 @@
 History
 =======
 
-1.3.1 (unreleased)
+1.3.1 (2021-02-13)
 ------------------
 
 - Do not load dependecies using z3c.autoinclude, because we do not have any.
